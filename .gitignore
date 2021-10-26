@@ -1,3 +1,13 @@
+#IntelliJ
+.idea
+
+#Maven
+target/
+
+#Api keys
+nasaApiKey.txt
+weatherApiKey.txt
+
 # Compiled class file
 *.class
 

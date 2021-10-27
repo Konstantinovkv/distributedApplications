@@ -1,9 +1,11 @@
-package distributedApplications.model.weatherModels;
+package distributedApplications.model.weatherModel;
 
 public class Sys{
+
     public int type;
     public int id;
     public String country;
     public int sunrise;
     public int sunset;
+
 }

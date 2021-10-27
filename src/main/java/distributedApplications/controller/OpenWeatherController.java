@@ -1,8 +1,8 @@
 package distributedApplications.controller;
 
 import distributedApplications.exception.InvalidCityNameException;
-import distributedApplications.model.weatherModels.City;
-import distributedApplications.model.weatherModels.WeatherDTO;
+import distributedApplications.model.weatherModel.City;
+import distributedApplications.model.weatherModel.WeatherDTO;
 import distributedApplications.response.WeatherResponse;
 import distributedApplications.service.WeatherService;
 import org.springframework.http.HttpStatus;

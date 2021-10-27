@@ -7,6 +7,7 @@ target/
 #Api keys
 nasaApiKey.txt
 weatherApiKey.txt
+footballApi.txt
 
 # Compiled class file
 *.class

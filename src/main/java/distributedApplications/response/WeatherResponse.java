@@ -1,6 +1,6 @@
 package distributedApplications.response;
 
-import distributedApplications.model.weatherModels.WeatherDTO;
+import distributedApplications.model.weatherModel.WeatherDTO;
 import lombok.Getter;
 
 @Getter
@@ -13,4 +13,5 @@ public class WeatherResponse {
 
     private String message;
     private WeatherDTO weatherInfo;
+
 }

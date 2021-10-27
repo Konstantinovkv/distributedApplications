@@ -2,6 +2,7 @@ package distributedApplications.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import distributedApplications.model.NasaDTO;
+import distributedApplications.model.footballModel.FootballDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -13,13 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
-public class NasaService {
+public class FootballService {
 
-    private static final Logger LOGGER = Logger.getLogger(NasaService.class.getName());
-    private final String url = "https://api.nasa.gov/planetary/apod?api_key=<API-KEY>";
-    private NasaDTO nasaDTO;
+    private static final Logger LOGGER = Logger.getLogger(FootballService.class.getName());
+    private final String url = "https://app.sportdataapi.com/api/v1/soccer/leagues?apikey=<API-KEY>";
+    private FootballDTO footballDTO;
 
-    public NasaDTO getPicture(){
+    public FootballDTO getFootballInfo(){
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -29,12 +30,12 @@ public class NasaService {
                     .build();
             Response response = client.newCall(request).execute();
             ObjectMapper objectMapper = new ObjectMapper();
-            nasaDTO = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), NasaDTO.class);
+            footballDTO = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), FootballDTO.class);
 
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, e.getMessage());
         }
-        return nasaDTO;
+        return footballDTO;
     }
 
 }

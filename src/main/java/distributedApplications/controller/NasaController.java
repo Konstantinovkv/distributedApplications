@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/nasa")
 public class NasaController {
 
-    @GetMapping(value = "/object")
+    @GetMapping(value = "/picture")
     public ResponseEntity<NasaDTO> getPictureOfTheDay(){
         NasaService nasaService = new NasaService();
         return new ResponseEntity<>(nasaService.getPicture(), HttpStatus.OK);

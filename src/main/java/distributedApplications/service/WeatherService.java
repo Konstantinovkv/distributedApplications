@@ -2,20 +2,21 @@ package distributedApplications.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import distributedApplications.exception.InvalidCityNameException;
-import distributedApplications.model.weatherModels.WeatherDTO;
+import distributedApplications.model.weatherModel.WeatherDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class WeatherService {
 
-    private String url = "http://api.openweathermap.org/data/2.5/weather?q=";
+    private final String url = "http://api.openweathermap.org/data/2.5/weather?q=";
     private String apiKey = "&appid=<API-KEY>";
     private String defaultCity = "Plovdiv";
     private WeatherDTO weatherDTO;
@@ -36,7 +37,7 @@ public class WeatherService {
         Response response = client.newCall(request).execute();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        weatherDTO = objectMapper.readValue(response.body().string(), WeatherDTO.class);
+        weatherDTO = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), WeatherDTO.class);
 
         return weatherDTO;
     }

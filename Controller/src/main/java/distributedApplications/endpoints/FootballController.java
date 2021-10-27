@@ -1,4 +1,4 @@
-package distributedApplications.controller;
+package distributedApplications.endpoints;
 
 import distributedApplications.model.footballModel.FootballDTO;
 import distributedApplications.service.FootballService;

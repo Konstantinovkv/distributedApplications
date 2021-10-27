@@ -1,4 +1,4 @@
-package distributedApplications.controller;
+package distributedApplications.endpoints;
 
 import distributedApplications.exception.InvalidCityNameException;
 import distributedApplications.model.weatherModel.City;

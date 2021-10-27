@@ -9,15 +9,21 @@ import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class WeatherService {
 
+    private static final Logger LOGGER = Logger.getLogger(WeatherService.class.getName());
+
     private final String url = "http://api.openweathermap.org/data/2.5/weather?q=";
-    private String apiKey = "&appid=<API-KEY>";
     private String defaultCity = "Plovdiv";
     private WeatherDTO weatherDTO;
 
@@ -26,12 +32,11 @@ public class WeatherService {
             city = defaultCity;
         }
         nameChecker(city);
-        String completeUrl = url + city + apiKey;
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
-                .url(completeUrl)
+                .url(createUrl(city))
                 .method("GET", null)
                 .build();
         Response response = client.newCall(request).execute();
@@ -48,6 +53,22 @@ public class WeatherService {
         if (!m.matches()) {
             throw new InvalidCityNameException("Invalid city name.");
         }
+    }
+
+    private String readApiKey(){
+        Path fileName = Path.of("weatherApiKey.txt");
+        String apiKey = null;
+        try {
+            apiKey = Files.readString(fileName) ;
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "Cannot find weatherApiKey.txt");
+        }
+        return apiKey;
+    }
+
+    private String createUrl(String city){
+        Object[] params = new Object[]{city};
+        return MessageFormat.format(url + "{0}&appid=" + readApiKey(), params);
     }
 
 }

@@ -8,6 +8,8 @@ import okhttp3.Response;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +18,7 @@ import java.util.logging.Logger;
 public class NasaService {
 
     private static final Logger LOGGER = Logger.getLogger(NasaService.class.getName());
-    private final String url = "https://api.nasa.gov/planetary/apod?api_key=<API-KEY>";
+    private final String url = "https://api.nasa.gov/planetary/apod?api_key=";
     private NasaDTO nasaDTO;
 
     public NasaDTO getPicture(){
@@ -24,7 +26,7 @@ public class NasaService {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
             Request request = new Request.Builder()
-                    .url(url)
+                    .url(createUrl())
                     .method("GET", null)
                     .build();
             Response response = client.newCall(request).execute();
@@ -35,6 +37,21 @@ public class NasaService {
             LOGGER.log(Level.WARNING, e.getMessage());
         }
         return nasaDTO;
+    }
+
+    private String readApiKey(){
+        Path fileName = Path.of("nasaApiKey.txt");
+        String apiKey = null;
+        try {
+            apiKey = Files.readString(fileName) ;
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "Cannot find nasaApiKey.txt");
+        }
+        return apiKey;
+    }
+
+    private String createUrl(){
+        return url + readApiKey();
     }
 
 }

@@ -1,7 +1,8 @@
 package distributedApplications.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import distributedApplications.model.NasaDTO;
+import distributedApplications.model.footballModel.FootballDTO;
+import distributedApplications.serviceImplementation.FootballServiceImplementation;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -15,13 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
-public class NasaService {
+public class FootballService implements FootballServiceImplementation {
 
-    private static final Logger LOGGER = Logger.getLogger(NasaService.class.getName());
-    private final String url = "https://api.nasa.gov/planetary/apod?api_key=";
-    private NasaDTO nasaDTO;
+    private static final Logger LOGGER = Logger.getLogger(FootballService.class.getName());
+    private final String url = "https://app.sportdataapi.com/api/v1/soccer/leagues?apikey=";
+    private FootballDTO footballDTO;
 
-    public NasaDTO getPicture(){
+    public FootballDTO getFootballInfo(){
+
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -31,21 +33,21 @@ public class NasaService {
                     .build();
             Response response = client.newCall(request).execute();
             ObjectMapper objectMapper = new ObjectMapper();
-            nasaDTO = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), NasaDTO.class);
+            footballDTO = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), FootballDTO.class);
 
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, e.getMessage());
         }
-        return nasaDTO;
+        return footballDTO;
     }
 
     private String readApiKey(){
-        Path fileName = Path.of("nasaApiKey.txt");
+        Path fileName = Path.of("footballApiKey.txt");
         String apiKey = null;
         try {
             apiKey = Files.readString(fileName) ;
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "Cannot find nasaApiKey.txt");
+            LOGGER.log(Level.WARNING, "Cannot find footballApiKey.txt");
         }
         return apiKey;
     }

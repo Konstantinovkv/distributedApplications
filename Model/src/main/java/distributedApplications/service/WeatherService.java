@@ -3,6 +3,7 @@ package distributedApplications.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import distributedApplications.exception.InvalidCityNameException;
 import distributedApplications.model.weatherModel.WeatherDTO;
+import distributedApplications.serviceImplementation.WeatherServiceImplementation;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -19,7 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class WeatherService {
+public class WeatherService implements WeatherServiceImplementation {
 
     private static final Logger LOGGER = Logger.getLogger(WeatherService.class.getName());
 

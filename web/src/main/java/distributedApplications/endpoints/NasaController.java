@@ -1,7 +1,8 @@
 package distributedApplications.endpoints;
 
 import distributedApplications.model.NasaDTO;
-import distributedApplications.service.NasaService;
+import distributedApplications.serviceImplementation.NasaServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/nasa")
 public class NasaController {
 
+    @Autowired
+    private NasaServiceImplementation nasaServiceImplementation;
+
     @GetMapping(value = "/picture")
     public ResponseEntity<NasaDTO> getPictureOfTheDay(){
-        NasaService nasaService = new NasaService();
-        return new ResponseEntity<>(nasaService.getPicture(), HttpStatus.OK);
+        return new ResponseEntity<>(nasaServiceImplementation.getPicture(), HttpStatus.OK);
     }
 
 }

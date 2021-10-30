@@ -14,6 +14,7 @@ public class WeatherDTO {
     public int visibility;
     public Wind wind;
     public Clouds clouds;
+    public Rain rain;
     public int dt;
     public Sys sys;
     public int timezone;

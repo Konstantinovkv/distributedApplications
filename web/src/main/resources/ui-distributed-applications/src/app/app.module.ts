@@ -11,16 +11,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
+import { FootballComponent } from './football/football.component';
 
 const routes: Routes = [
   {path: 'nasa', component: NasaComponent},
+  {path: 'football', component: FootballComponent},
   {path: '', redirectTo: '/', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NasaComponent
+    NasaComponent,
+    FootballComponent
   ],
   imports: [
     BrowserModule,

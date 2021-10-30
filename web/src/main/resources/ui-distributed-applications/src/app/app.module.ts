@@ -11,6 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: 'main-nav', component: MainNavComponent},
+  {path: '', redirectTo: '/main-nav', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
@@ -27,7 +33,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

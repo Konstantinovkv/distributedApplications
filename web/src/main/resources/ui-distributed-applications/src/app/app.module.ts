@@ -12,10 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { FootballComponent } from './football/football.component';
+import { WeatherComponent } from './weather/weather.component';
+import { WeatherFormComponent } from './weather-form/weather-form.component';
 
 const routes: Routes = [
   {path: 'nasa', component: NasaComponent},
   {path: 'football', component: FootballComponent},
+  {path: 'weather', component: WeatherFormComponent},
+  {path: 'city', component: WeatherComponent},
   {path: '', redirectTo: '/', pathMatch: 'full'}
 ];
 
@@ -23,7 +27,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NasaComponent,
-    FootballComponent
+    FootballComponent,
+    WeatherComponent,
+    WeatherFormComponent
   ],
   imports: [
     BrowserModule,

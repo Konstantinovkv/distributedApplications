@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="card">
+        <h2 class="text-center">Weather Forecast</h2>
+        <input class="form-control form-control-lg" type="text" placeholder="Enter city" #box>
+        <button type="button" class="btn btn-primary btn-lg" (click)="getValue(box.value)" routerLink="/city">Submit</button>
+    </div>
+</div>

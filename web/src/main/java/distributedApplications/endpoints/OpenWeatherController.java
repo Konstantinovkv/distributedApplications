@@ -23,7 +23,7 @@ public class OpenWeatherController {
     private WeatherServiceImplementation weatherServiceImplementation;
     private static final Logger LOGGER = Logger.getLogger(OpenWeatherController.class.getName());
 
-    @GetMapping(value = "/forecast")
+    @PostMapping(value = "/forecast")
     public ResponseEntity<WeatherResponse> getTheWeather(@RequestBody City city){
         WeatherDTO weatherDTO;
         try {

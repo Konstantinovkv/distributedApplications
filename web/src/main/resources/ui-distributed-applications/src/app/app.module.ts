@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'football', component: FootballComponent},
   {path: 'weather', component: WeatherFormComponent},
   {path: 'city', component: WeatherComponent},
-  {path: '', redirectTo: '/', pathMatch: 'full'}
+  {path: '', redirectTo: 'nasa', pathMatch: 'full'}
 ];
 
 @NgModule({

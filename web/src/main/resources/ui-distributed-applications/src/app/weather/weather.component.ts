@@ -18,4 +18,8 @@ export class WeatherComponent implements OnInit {
     });
   }
 
+  roundTemp(number: number): number{
+    return Math.round(number);
+  }
+
 }

@@ -53,7 +53,7 @@ public class FootballService implements FootballServiceImplementation {
     }
 
     private String createUrl(){
-        return url + readApiKey();
+        return url + "477d28e0-374a-11ec-82fa-776a783d9ed2";
     }
 
 }

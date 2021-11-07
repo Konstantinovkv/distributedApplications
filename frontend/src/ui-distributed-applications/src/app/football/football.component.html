@@ -1,0 +1,20 @@
+<div class ="container">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <th>League ID</th>
+                    <th>Country ID</th>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let football of (footballs$ | async)">
+                        <td>{{football.league_id}}</td>
+                        <td>{{football.country_id}}</td>
+                        <td>{{football.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

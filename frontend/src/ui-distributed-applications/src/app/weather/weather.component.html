@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card">
+    <h2 class="text-center">Weather Forecast</h2>
+    <div class="card-body" style="margin-left: 2%;">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">City</th>
+            <td>{{weatherData.weatherInfo.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Temp</th>
+            <td>{{roundTemp(weatherData.weatherInfo.main.temp-273.15)}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Feels Like</th>
+            <td>{{roundTemp(weatherData.weatherInfo.main.feels_like-273.15)}}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Temp Min</th>
+            <td>{{roundTemp(weatherData.weatherInfo.main.temp_min-273.15)}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Temp Max</th>
+            <td>{{roundTemp(weatherData.weatherInfo.main.temp_max-273.15)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -52,7 +52,7 @@ public class NasaService implements NasaServiceImplementation {
     }
 
     private String createUrl(){
-        return url + readApiKey();
+        return url + "FjAXiWT40XtMzRZc7RWiZl5XV5xIiEI49DCzvXFb";
     }
 
 }

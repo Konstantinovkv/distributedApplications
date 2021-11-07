@@ -7,9 +7,13 @@ import distributedApplications.serviceImplementation.WeatherServiceImplementatio
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
@@ -18,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class WeatherService implements WeatherServiceImplementation {
@@ -69,7 +74,7 @@ public class WeatherService implements WeatherServiceImplementation {
 
     private String createUrl(String city){
         Object[] params = new Object[]{city};
-        return MessageFormat.format(url + "{0}&appid=" + readApiKey(), params);
+        return MessageFormat.format(url + "{0}&appid=" + "f0a36458878574ce1b0dda933c9f70d4", params);
     }
 
 }
